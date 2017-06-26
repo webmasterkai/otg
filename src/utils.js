@@ -5,11 +5,17 @@ export function decodePosition(hex) {
   const buf = Buffer.from(hex, 'hex')
   return [buf.readFloatBE(0), buf.readFloatBE(4)]
 }
-export function encodePosition({ latitude, longitude }) {
+export function encodePosition([pos1, pos2]) {
   const buf = Buffer.allocUnsafe(8)
-  buf.writeFloatBE(longitude, 0)
-  buf.writeFloatBE(latitude, 4)
+  buf.writeFloatBE(pos1, 0)
+  buf.writeFloatBE(pos2, 4)
   return buf
+}
+export function decodeHalfByte(hex) {
+  return [parseInt(hex[0], 16), parseInt(hex[1], 16)]
+}
+export function encodeHalfByte([first, second]) {
+  return Buffer.from(first.toString(16) + second.toString(16), 'hex')
 }
 export function fraction(ordinal) {
   return (hex) => {
@@ -30,7 +36,6 @@ export const quadruple = multiple(4)
 export const fifth = fraction(5)
 export const quintuple = multiple(5)
 export const sixth = fraction(6)
-export const 
 export const sixteenth = fraction(16)
 export const sixteenfold = multiple(16)
 
