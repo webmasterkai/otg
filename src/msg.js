@@ -35,25 +35,6 @@ export const windDirection = {
   },
 }
 
-export const windSpeed = {
-  length: 6,
-  description: '0-64. speed in kts. 8 bit uint.',
-}
-export const seaState = {
-  description: 'World Meteorological Organization sea state code',
-  length: 3,
-  values: [
-    'WMO 1. 0.0 to 0.1 metres (0.00 to 0.33 ft). Calm.',
-    'WMO 2. 0.1 to 0.5 metres (3.9 in to 1 ft 7.7 in). Smooth (wavelets).',
-    'WMO 3. 0.5 to 1.25 metres (1 ft 8 in to 4 ft 1 in). Slight waves.',
-    'WMO 4. 1.25 to 2.5 metres (4 ft 1 in to 8 ft 2 in). Moderate waves.',
-    'WMO 5. 2.5 to 4 metres (8 ft 2 in to 13 ft 1 in). Rough.',
-    'WMO 6. 4 to 6 metres (13 to 20 ft). Very rough',
-    'WMO 7. 6 to 9 metres (20 to 30 ft). High',
-    'WMO 8. 9 to 14 metres (30 to 46 ft). Very high',
-  ],
-}
-
 export const boatSpeedOverGround = {
   description: 'Boat speed in half knot increments.',
   tech: 'Turn into 8 bit uint. Take number and devide by half.',

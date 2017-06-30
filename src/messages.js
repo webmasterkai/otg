@@ -1,12 +1,7 @@
 export default [
   {
-    id: 0,
-    msg: 'We’re okay! Everyone is safe and sound. All systems operational.',
-    status: 'ok',
-  },
-  {
     id: 1,
-    msg: 'We miss you all.',
+    msg: 'We’re okay! Everyone is safe and sound. All systems operational.',
     status: 'ok',
   },
   {
@@ -178,5 +173,27 @@ export default [
   {
     id: 41,
     msg: 'Cold front passage. Much rain and wind shifting.',
+  },
+  {
+    msg: 'Got too far off from the favorable currents.',
+  },
+  {
+    msg: 'Finally out of that reverse current/eddy.',
+  },
+  {
+    msg: 'We miss you all.',
+    status: 'ok',
+  },
+  {
+    msg: 'Beautiful weather but light winds can be frustrating.',
+  },
+  {
+    msg: 'Love you all.',
+  },
+  {
+    msg: 'Just getting up for the day.',
+  },
+  {
+    msg: 'Reverie is happy this morning.',
   },
 ]
