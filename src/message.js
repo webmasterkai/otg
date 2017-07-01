@@ -35,6 +35,7 @@ export const cog = {
   required: true,
 }
 export const speed = {
+  defaultValue: 0,
   description: 'Speed through the water.',
   decode: sixteenth,
   encode: sixteenfold,
