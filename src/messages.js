@@ -82,7 +82,7 @@ export default [
   },
   {
     id: 20,
-    msg: 'There is strong strong weather and we are uncomfortable.',
+    msg: 'There is some strong weather and we are uncomfortable.',
   },
   {
     id: 21,

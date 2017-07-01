@@ -1,7 +1,7 @@
 import iridium from 'iridium-sbd'
 // >>>  > AT+SBDWT=Winds <10. Too far W from gulfstream, finally out of reverse current/eddy. Spinnaker day. 30 16'N 79 20'W. Next update Tue or Wed.
 
-const txtMsg = 'Wnd <7. Just getting up for the day. 36-49N 74-20W'
+const txtMsg = 'Catching up to another sailboat! 37-32N 73-48W'
 
 iridium.open({
   debug: 1, // turn debugging on

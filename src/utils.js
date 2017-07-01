@@ -1,8 +1,7 @@
 import { round } from 'lodash'
 
 // Returns position.
-export function decodePosition(hex) {
-  const buf = Buffer.from(hex, 'hex')
+export function decodePosition(buf) {
   return [buf.readFloatBE(0), buf.readFloatBE(4)]
 }
 export function encodePosition([pos1, pos2]) {

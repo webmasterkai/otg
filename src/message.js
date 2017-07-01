@@ -14,6 +14,7 @@ export const position = {
   encode: encodePosition,
   size: 8,
   bits: 64,
+  required: true,
 }
 
 // SPEED OVER GROUND - 16 MAX
@@ -23,6 +24,7 @@ export const sog = {
   encode: sixteenfold,
   size: 1,
   bits: 8,
+  required: true,
 }
 export const cog = {
   description: 'Course over ground. True.',
@@ -30,6 +32,7 @@ export const cog = {
   encode: encodeDegrees,
   size: 1,
   bits: 8,
+  required: true,
 }
 export const speed = {
   description: 'Speed through the water.',
