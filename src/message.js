@@ -3,8 +3,9 @@ import {
   fourth, quadruple,
   fifth, quintuple,
   sixth, sextuple,
-  sixteenth, sixteenfold,
+  // sixteenth, sixteenfold,
   encodeDegrees, decodeDegrees,
+  thirtieth, thirtyfold,
 } from './utils'
 
 // POSITION
@@ -17,11 +18,11 @@ export const position = {
   required: true,
 }
 
-// SPEED OVER GROUND - 16 MAX
+// SPEED OVER GROUND - 8.5 mps max
 export const sog = {
-  description: 'Speed over ground. Divide by 16.',
-  decode: sixteenth,
-  encode: sixteenfold,
+  description: 'Speed over ground. Meters per second.',
+  decode: thirtieth,
+  encode: thirtyfold,
   size: 1,
   bits: 8,
   required: true,
@@ -37,8 +38,8 @@ export const cog = {
 export const speed = {
   defaultValue: 0,
   description: 'Speed through the water.',
-  decode: sixteenth,
-  encode: sixteenfold,
+  decode: thirtieth,
+  encode: thirtyfold,
   size: 1,
   bits: 8,
 }

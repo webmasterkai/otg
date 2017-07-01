@@ -17,17 +17,15 @@ export function encodeHalfByte([first, second]) {
   return Buffer.from(first.toString(16) + second.toString(16), 'hex')
 }
 export function fraction(ordinal) {
-  return (hex) => {
-    const buf = Buffer.from(hex, 'hex')
-    return round((buf.readUInt8() / ordinal), 1)
-  }
+  return buf => round((buf.readUInt8() / ordinal), 1)
 }
 export function multiple(multiplier) {
   return (num) => {
     const maxVal = 255 / multiplier
     const buf = Buffer.allocUnsafe(1)
     if (num > maxVal) return buf.writeUInt8(255, 0)
-    return buf.writeUInt8(Math.round(num * multiplier), 0)
+    buf.writeUInt8(Math.round(num * multiplier), 0)
+    return buf
   }
 }
 export const fourth = fraction(4)
@@ -40,10 +38,11 @@ export const fifteenth = fraction(15)
 export const fifteenfold = multiple(15)
 export const sixteenth = fraction(16)
 export const sixteenfold = multiple(16)
+export const thirtyfold = multiple(30)
+export const thirtieth = fraction(30)
 
 export const deg8bit = 359 / 255
-export function decodeDegrees(hex) {
-  const buf = Buffer.from(hex, 'hex')
+export function decodeDegrees(buf) {
   const number = buf.readUInt8()
   const float = deg8bit * number
   return Math.round(float)
@@ -52,5 +51,6 @@ export function encodeDegrees(degrees) {
   const float = degrees / deg8bit
   const number = Math.round(float)
   const buf = Buffer.allocUnsafe(1)
-  return buf.writeUInt8(number, 0)
+  buf.writeUInt8(number, 0)
+  return buf
 }

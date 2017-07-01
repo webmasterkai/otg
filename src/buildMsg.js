@@ -1,11 +1,11 @@
-import { get, map, reduce } from 'lodash'
+import { get, map, omit, reduce } from 'lodash'
 import { flow, set, sumBy } from 'lodash/fp'
 import * as fieldFuncs from './message'
 
 export const fieldOrder = [
   'position', // 8
-  // 'sog', // 1
-  // 'cog', // 1
+  'sog', // 1
+  'cog', // 1
   // 'speed', // 1
   // 'heading', // 1
   // 'waterDepth', // 1
@@ -40,9 +40,10 @@ export function msgReducer(buff) {
     const { decode, id, size } = fieldInfo
     const start = res.buffPos
     const end = start + size
+    const fieldBuff = buff.slice(start, end)
     return flow(
       set('buffPos', end),
-      set(id, decode(buff.slice(start, end)))
+      set(id, decode(fieldBuff))
     )(res)
   }
 }
@@ -50,5 +51,5 @@ export function hexBuff(hexString) {
   return new Buffer(hexString, 'hex')
 }
 export function decodeMessage(hexString) {
-  return reduce(fields, msgReducer(hexBuff(hexString)), { buffPos: 0 })
+  return omit(reduce(fields, msgReducer(hexBuff(hexString)), { buffPos: 0 }), 'buffPos')
 }
