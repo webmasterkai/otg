@@ -1,5 +1,5 @@
-import { propertyOf, reduce } from 'lodash'
-import { flow, map, set, sumBy } from 'lodash/fp'
+import { get, map, reduce } from 'lodash'
+import { flow, set, sumBy } from 'lodash/fp'
 import * as fieldFuncs from './message'
 
 export const fieldOrder = [
@@ -21,27 +21,23 @@ export const fieldOrder = [
   // 'msg',
   // 'txt',
 ]
-export const fieldFuncs = map(propertyOf(funcs), fieldOrder)
+export const fields = map(fieldOrder, id => set('id', id)(get(fieldFuncs, id)))
 
-export function encodeField(props, funcs) {
-  return id => funcs[id].encode(props[id])
-}
-
-// Map fieldOrder to a new array of buffers.
+// Send it a props object and get back a buffer.
 export function encodeMessage(props) {
   // Check to make sure we have props for the entire message?
   // Use some default 0 value?
-  return flow(
-    map(encodeField(props, fieldFuncs)),
-    buffs => Buffer.concat(buffs, sumBy('length', buffs))
-  )(fieldOrder)
+  // Map known fields to an array of buffers.
+  const buffs = map(fields, ({ encode, id }) => encode(props[id]))
+  // Return joined array of buffs.
+  return Buffer.concat(buffs, sumBy('length', buffs))
 }
 
 // DECODE
 
 export function msgReducer(buff) {
-  return (res, fieldInfo, id) => {
-    const { decode, size } = fieldInfo
+  return (res, fieldInfo) => {
+    const { decode, id, size } = fieldInfo
     const start = res.buffPos
     const end = start + size
     return flow(
@@ -54,5 +50,5 @@ export function hexBuff(hexString) {
   return new Buffer(hexString, 'hex')
 }
 export function decodeMessage(hexString) {
-  return reduce(fieldOrder, msgReducer(hexBuff(hexString)), { buffPos: 0 })
+  return reduce(fields, msgReducer(hexBuff(hexString)), { buffPos: 0 })
 }
