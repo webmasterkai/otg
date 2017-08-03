@@ -13,7 +13,10 @@ export const getPosArr = over([getLon, getLat]) (state) {
 export const selector = {
   'position': getPositionArray,
 }
+
 'data.data.130.129025.fields.latitude'
 'data.data.130.129025.fields.longitude'
 'data.data.130.129026.fields.cog'
 'data.data.130.129026.fields.sog'
+
+export const getHeading = '115.127250.fields.'

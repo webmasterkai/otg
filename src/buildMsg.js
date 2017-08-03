@@ -6,12 +6,12 @@ export const fieldOrder = [
   'position', // 8
   'sog', // 1
   'cog', // 1
-  // 'speed', // 1
-  // 'heading', // 1
-  // 'waterDepth', // 1
-  // 'waterTemp', // 1
+  'heading', // 1
   // 'windSpeed', // 1
   // 'windDirection', // 1
+  // 'waterSpeed', // 1
+  // 'waterDepth', // 1
+  // 'waterTemp', // 1
   // 'movementStatus', // 0.5
   // 'timeToNext', // 0.5
   // 'seaState', // 0.5
